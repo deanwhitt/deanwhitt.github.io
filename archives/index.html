@@ -168,7 +168,7 @@
   <div class="post-block">
     <div class="posts-collapse">
       <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 4 篇日志。 继续努力。</span>
+        <span class="collection-header">嗯..! 目前共计 3 篇日志。 继续努力。</span>
       </div>
 
       
@@ -181,15 +181,15 @@
 
       <div class="post-meta">
         <time itemprop="dateCreated"
-              datetime="2024-04-29T16:49:50+08:00"
+              datetime="2024-04-29T17:54:38+08:00"
               content="2024-04-29">
           04-29
         </time>
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/2024/04/29/pdf/" itemprop="url">
-            <span itemprop="name">pdf</span>
+          <a class="post-title-link" href="/2024/04/29/20240429-First-Blog/" itemprop="url">
+            <span itemprop="name">20240429-First-Blog</span>
           </a>
       </div>
 
@@ -201,35 +201,15 @@
 
       <div class="post-meta">
         <time itemprop="dateCreated"
-              datetime="2024-04-29T16:27:04+08:00"
+              datetime="2024-04-29T17:22:27+08:00"
               content="2024-04-29">
           04-29
         </time>
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/2024/04/29/pdff/" itemprop="url">
-            <span itemprop="name">pdff</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2024-04-29T05:32:00+08:00"
-              content="2024-04-29">
-          04-29
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2024/04/29/2024-04-29-diag/" itemprop="url">
-            <span itemprop="name">2024-04-29-diag</span>
+          <a class="post-title-link" href="/2024/04/29/PDF01/" itemprop="url">
+            <span itemprop="name">PDF01-高性能MySQL第三版</span>
           </a>
       </div>
 
@@ -328,9 +308,15 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">日志</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
       </div>
   </nav>
 </div>
@@ -408,6 +394,26 @@
 
 
 
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
 
 
 
